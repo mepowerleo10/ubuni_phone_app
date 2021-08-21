@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ubuni_phone_app/api/http_client.dart';
 import 'package:ubuni_phone_app/api/json_models/phone.dart';
 import 'package:ubuni_phone_app/api/json_parsers/phone_parser.dart';
+import 'package:ubuni_phone_app/routes.dart';
 
 class ListPage extends StatefulWidget {
   const ListPage({Key? key}) : super(key: key);
@@ -34,7 +35,7 @@ class _ListPageState extends State<ListPage> {
               return ListView.builder(
                 itemCount: data.length,
                 itemBuilder: (context, index) {
-                  return Text(data[index].name);
+                  return PhoneListItem(data[index]);
                 },
               );
             }
@@ -53,16 +54,25 @@ class _ListPageState extends State<ListPage> {
   }
 }
 
-class PhoneListItem extends StatefulWidget {
-  const PhoneListItem({Key? key}) : super(key: key);
+class PhoneListItem extends StatelessWidget {
+  final Phone _phone;
 
-  @override
-  _PhoneListItemState createState() => _PhoneListItemState();
-}
+  const PhoneListItem(this._phone);
 
-class _PhoneListItemState extends State<PhoneListItem> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Card(
+        child: TableRowInkWell(
+      child: ListTile(
+        leading: Icon(
+          Icons.phone_android_outlined,
+          size: 64,
+        ),
+        title: Text(_phone.name),
+        subtitle: Text(_phone.brand),
+      ),
+      onTap: () => RouteGenerator.generateRoute(
+          RouteSettings(arguments: _phone, name: RouteGenerator.itemPage)),
+    ));
   }
 }

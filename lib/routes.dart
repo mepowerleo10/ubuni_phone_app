@@ -22,7 +22,7 @@ class RouteGenerator {
       case listPage:
         return MaterialPageRoute(builder: (_) => const ListPage());
       case itemPage:
-        return MaterialPageRoute(builder: (_) => ItemPage());
+        return MaterialPageRoute(builder: (_) => ItemPage(settings.arguments));
       default:
         throw FormatException("Route Not Found!");
     }
