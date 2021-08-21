@@ -1,34 +1,39 @@
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:ubuni_phone_app/routes.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MiFoniApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MiFoniApp extends StatelessWidget {
+  const MiFoniApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Simple App',
-      home: ChangeNotifierProvider(
-        create: (context) => CounterModel(),
-        child: DemoPage(),
-      ),
+      onGenerateTitle: (context) => "MiFoni",
+      initialRoute: RouteGenerator.homePage,
+      onGenerateRoute: RouteGenerator.generateRoute,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
+/* @override
+Widget build(BuildContext context) {
+  return MultiProvider(
+    providers: [
+      Provider<DataCache>(create: (_) => DataCache()),
+      ChangeNotifierProvider<Something>(
+        create: (_) => Something()
+      ),
+    ],
+    child: MaterialApp(...)
+  );
+} */
 
 class DemoPage extends StatelessWidget {
   const DemoPage({Key? key}) : super(key: key);
