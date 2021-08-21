@@ -9,8 +9,8 @@ class RequestREST {
 
   static final _client = Dio(BaseOptions(
       baseUrl: "https://www.paa.ubuni.co.tz",
-      connectTimeout: 3000,
-      receiveTimeout: 3000,
+      connectTimeout: 5000,
+      receiveTimeout: 5000,
       headers: {
         "Access-Control-Allow-Origin": "*", // Required for CORS support to work
         "Access-Control-Allow-Credentials": true,

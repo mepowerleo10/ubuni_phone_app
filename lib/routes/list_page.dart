@@ -62,17 +62,16 @@ class PhoneListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        child: TableRowInkWell(
-      child: ListTile(
-        leading: Icon(
-          Icons.phone_android_outlined,
-          size: 64,
-        ),
-        title: Text(_phone.name),
-        subtitle: Text(_phone.brand),
-      ),
-      onTap: () => RouteGenerator.generateRoute(
-          RouteSettings(arguments: _phone, name: RouteGenerator.itemPage)),
-    ));
+        child: InkWell(
+            child: ListTile(
+              leading: Icon(
+                Icons.phone_android_outlined,
+                size: 64,
+              ),
+              title: Text(_phone.name),
+              subtitle: Text(_phone.brand),
+            ),
+            onTap: () => Navigator.pushNamed(context, RouteGenerator.itemPage,
+                arguments: _phone)));
   }
 }

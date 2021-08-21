@@ -4,7 +4,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ubuni_phone_app/routes/home_page.dart';
+// import 'package:ubuni_phone_app/routes/home_page.dart';
+import 'package:ubuni_phone_app/routes/new_home_page.dart';
 import 'package:ubuni_phone_app/routes/list_page.dart';
 import 'package:ubuni_phone_app/routes/item_page.dart';
 
@@ -22,7 +23,8 @@ class RouteGenerator {
       case listPage:
         return MaterialPageRoute(builder: (_) => const ListPage());
       case itemPage:
-        return MaterialPageRoute(builder: (_) => ItemPage(settings.arguments));
+        return MaterialPageRoute(
+            builder: (_) => ItemPage(), settings: settings);
       default:
         throw FormatException("Route Not Found!");
     }

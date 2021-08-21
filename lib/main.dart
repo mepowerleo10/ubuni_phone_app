@@ -15,6 +15,9 @@ class MiFoniApp extends StatelessWidget {
       initialRoute: RouteGenerator.homePage,
       onGenerateRoute: RouteGenerator.generateRoute,
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        accentColor: Colors.deepOrangeAccent,
+      ),
     );
   }
 }
