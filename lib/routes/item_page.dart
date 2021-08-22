@@ -14,7 +14,8 @@ class ItemPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _phone = ModalRoute.of(context)!.settings.arguments as Phone;
-    final _price = Random().nextDouble() * 1000;
+    final _price = (Random().nextDouble() * 1000).toStringAsFixed(2);
+    final _rating = Random().nextDouble() * 5;
 
     return Scaffold(
         body: Container(
@@ -81,18 +82,38 @@ class ItemPage extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                child: Center(
-                    child: AnimatedButton(
-                  text: "Buy",
-                  onPress: () {},
-                  transitionType: TransitionType.BOTTOM_CENTER_ROUNDER,
-                  textStyle: GoogleFonts.lato(
-                      fontSize: 24, fontWeight: FontWeight.bold),
-                )),
-              ),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                RatingBar.builder(
+                  initialRating: _rating,
+                  minRating: 0,
+                  direction: Axis.horizontal,
+                  allowHalfRating: true,
+                  itemCount: 5,
+                  itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                  itemBuilder: (context, _) => Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                  ),
+                  onRatingUpdate: (rating) {
+                    print(rating);
+                  },
+                ),
+                OutlinedButton(
+                  child: Container(
+                    margin: EdgeInsets.all(8),
+                    child: Text(
+                      "Buy",
+                      style: GoogleFonts.lato(
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.deepOrange[400]),
+                    ),
+                  ),
+                  onPressed: () {},
+                )
+              ]),
             ],
-          )
+          ),
         ],
       ),
     ));

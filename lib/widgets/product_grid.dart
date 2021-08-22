@@ -98,7 +98,7 @@ class PhoneGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _price = Random().nextDouble() * 1000;
+    final _price = (Random().nextDouble() * 1000).toStringAsFixed(2);
 
     return InkWell(
       child: Container(
