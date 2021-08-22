@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ubuni_phone_app/api/http_client.dart';
@@ -48,19 +50,35 @@ class _PhoneGridState extends State<PhoneGrid> {
           return Container(
             margin: EdgeInsets.all(10),
             child: SingleChildScrollView(
-              child: Container(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Oop! We Couldn't Reach the Internet!!!",
-                          style: GoogleFonts.oswald(
-                              fontSize: 32, color: Colors.black87)),
-                      Icon(
-                        Icons.cloud_off_outlined,
-                        color: Colors.black87,
-                        size: 32,
-                      )
-                    ]),
+              child: InkWell(
+                child: Container(
+                  child: Center(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 16,
+                          ),
+                          Center(
+                            child: Text(
+                              "Seems we can't reach the Internet!!!",
+                              style: GoogleFonts.lato(
+                                  fontSize: 32, color: Colors.black87),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 16,
+                          ),
+                          Icon(
+                            Icons.cloud_off_outlined,
+                            color: Colors.black45,
+                            size: 64,
+                          )
+                        ]),
+                  ),
+                ),
+                onTap: () => setState(() {}),
               ),
             ),
           );
@@ -76,11 +94,12 @@ class _PhoneGridState extends State<PhoneGrid> {
 
 class PhoneGridItem extends StatelessWidget {
   final Phone _phone;
-
   const PhoneGridItem(this._phone);
 
   @override
   Widget build(BuildContext context) {
+    final _price = Random().nextDouble() * 1000;
+
     return InkWell(
       child: Container(
         child: Column(
@@ -115,7 +134,7 @@ class PhoneGridItem extends StatelessWidget {
                 style: GoogleFonts.lato(
                     fontWeight: FontWeight.w600, fontSize: 20)),
             Text(
-              "\$300",
+              "\$${_price}",
               style: GoogleFonts.lato(
                   fontWeight: FontWeight.w600,
                   fontSize: 20,

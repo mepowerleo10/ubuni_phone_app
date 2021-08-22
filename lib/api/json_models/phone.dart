@@ -6,7 +6,6 @@ part 'phone.g.dart';
 class Phone {
   final int id;
   final String name;
-
   @JsonKey(name: 'Brand')
   final String brand;
 
