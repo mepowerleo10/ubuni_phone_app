@@ -1,16 +1,11 @@
 # ubuni_phone_app
 
-A new Flutter project.
+A Simple Phone Shopping application.
 
-## Getting Started
+## Work Done
 
-This project is a starting point for a Flutter application.
+- The application displays a list of all phones retrieved from the [https://www.paa.ubuni.co.tz/phones] REST endpoint.
+- Has an introductory screen to preview the sample features of the app
+- REST calls to [https://www.paa.ubuni.co.tz/phones/{id}] are not made since they are redundant and might be expensive for the phone. They are replaced by a single object from [https://www.paa.ubuni.co.tz/phones/] endpoint as the list contains an object similar to that returned by a similar `id`
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+by @mepowerleo10
