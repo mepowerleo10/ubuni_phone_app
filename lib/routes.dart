@@ -21,7 +21,8 @@ class RouteGenerator {
       case homePage:
         return MaterialPageRoute(builder: (_) => const HomePage());
       case listPage:
-        return MaterialPageRoute(builder: (_) => const ListPage());
+        return MaterialPageRoute(
+            builder: (_) => const ListPage(), settings: settings);
       case itemPage:
         return MaterialPageRoute(
             builder: (_) => ItemPage(), settings: settings);

@@ -3,6 +3,8 @@ import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:ubuni_phone_app/widgets/carousel.dart';
 import 'package:ubuni_phone_app/widgets/product_grid.dart';
 
+import '../routes.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -36,8 +38,9 @@ class _HomePageState extends State<HomePage> {
                   textAlign: TextAlign.center,
                 ),
                 IconButton(
-                  icon: Icon(Icons.notifications_on_outlined),
-                  onPressed: () {},
+                  icon: Icon(Icons.favorite_outline_outlined),
+                  onPressed: () =>
+                      Navigator.of(context).pushNamed(RouteGenerator.listPage),
                 )
               ],
             ),
