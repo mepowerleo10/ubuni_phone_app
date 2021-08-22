@@ -13,6 +13,10 @@ class ItemPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /* Passing the same phone object, since the REST endpoint of 'phones/{id}' returns 
+    an item similar to that in the 'phones' endpoint JSON list.
+    Multiple calls are redundant, and too slow
+    */
     final _phone = ModalRoute.of(context)!.settings.arguments as Phone;
     final _price = (Random().nextDouble() * 1000).toStringAsFixed(2);
     final _rating = Random().nextDouble() * 5;
