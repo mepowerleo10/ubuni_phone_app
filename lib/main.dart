@@ -13,7 +13,7 @@ class MiFoniApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       onGenerateTitle: (context) => "MiFoni",
-      initialRoute: RouteGenerator.homePage,
+      initialRoute: RouteGenerator.introPage,
       onGenerateRoute: RouteGenerator.generateRoute,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
