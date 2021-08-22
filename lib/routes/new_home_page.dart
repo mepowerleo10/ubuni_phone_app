@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:ubuni_phone_app/widgets/sliver_header.dart';
+import 'package:material_floating_search_bar/material_floating_search_bar.dart';
+import 'package:ubuni_phone_app/widgets/carousel.dart';
+import 'package:ubuni_phone_app/widgets/product_grid.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,54 +14,80 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(
-      children: [
-        CustomScrollView(
-          slivers: [
-            SliverHeader(),
-            SliverFixedExtentList(
-              itemExtent: 150.0,
-              delegate: SliverChildListDelegate(
-                [
-                  Container(color: Colors.red),
-                  Container(color: Colors.purple),
-                  Container(color: Colors.green),
-                  Container(color: Colors.orange),
-                  Container(color: Colors.yellow),
-                  Container(color: Colors.pink),
+        body: Container(
+      margin: EdgeInsets.all(6),
+      child: Column(
+        children: [
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                    child: IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {},
+                )),
+                Text(
+                  'MiFoNi',
+                  style: TextStyle(
+                      fontFamily: 'RampartOne',
+                      fontSize: 36.0,
+                      color: Colors.black),
+                  textAlign: TextAlign.center,
+                ),
+                IconButton(
+                  icon: Icon(Icons.notifications_on_outlined),
+                  onPressed: () {},
+                )
+              ],
+            ),
+          ),
+          Card(
+            child: Container(
+              height: 200,
+              child: Carousel(),
+            ),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          ),
+          /* Container(
+            child: Expanded(
+                child: Center(
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  Chip(
+                    label: Text('iPhone'),
+                  ),
+                  Chip(
+                    label: Text('Samsung'),
+                  ),
+                  Chip(
+                    label: Text('TECNO'),
+                  )
                 ],
               ),
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              padding: EdgeInsets.all(4),
-              decoration:
-                  BoxDecoration(color: Colors.white, shape: BoxShape.circle),
-              child: InkWell(
-                child: CircleAvatar(
-                  radius: 24,
-                  backgroundColor: Colors.deepOrange[200],
-                  child: Text(
-                    "ME",
-                    style: GoogleFonts.lato(
-                        color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-              margin: const EdgeInsets.only(top: 8, left: 8),
-            ),
-            InkWell(
-                child: IconButton(
-              icon: Icon(Icons.search_rounded),
-              onPressed: () {},
-            ))
-          ],
-        )
-      ],
+            )),
+          ), */
+          Container(color: Colors.yellowAccent),
+          Expanded(child: PhoneGrid()),
+        ],
+      ),
     ));
+  }
+
+  Widget buildBody() {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8),
+      child: Material(
+        child: Column(
+          children: List.generate(100, (index) => index.toString())
+              .map((e) => ListTile(
+                    title: Text(e),
+                  ))
+              .toList(),
+        ),
+      ),
+    );
   }
 }

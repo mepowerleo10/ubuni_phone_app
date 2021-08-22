@@ -12,7 +12,7 @@ class _CarouselState extends State<Carousel> {
   @override
   Widget build(BuildContext context) {
     return Swiper(
-      itemCount: 4,
+      itemCount: 10,
       itemBuilder: (context, index) {
         return Image.asset(
           'assets/images/img${index + 1}.jpg',
@@ -23,6 +23,8 @@ class _CarouselState extends State<Carousel> {
       containerWidth: 50,
       pagination: SwiperPagination(),
       control: SwiperControl(),
+      autoplay: true,
+      autoplayDelay: 4000,
     );
   }
 }
